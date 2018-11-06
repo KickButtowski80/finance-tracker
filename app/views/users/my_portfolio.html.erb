@@ -24,6 +24,13 @@
 </div> 
 <div id="results">
     <%= render 'users/result' %>
-</div>
+</div> 
+<% current_user.stocks.all.each do |user_stock| %>
+<ul>
 
+    <li><%= user_stock.name %></li>
+</ul>
+
+    
+<% end %>
  
