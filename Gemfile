@@ -50,6 +50,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -70,3 +72,6 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 
 gem 'therubyracer'
+gem "stock_quote", '~> 2.0.0'
+
+gem "font-awesome-rails"
