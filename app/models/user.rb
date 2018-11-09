@@ -32,7 +32,7 @@ class User < ApplicationRecord
                  params.strip!
                  params.downcase!
                  to_send_back = (first_name_matches(params)+
-                                 last_name_matches(params)+             
+                                 last_name_matches(params)+  
                                  email_matches(params)).uniq
                  return nil unless to_send_back
                  to_send_back             
@@ -47,6 +47,11 @@ class User < ApplicationRecord
              matches("last_name", params)
          end
          
+     
+         
+         
+         
+         
          def self.email_matches params
              matches("email", params)
          end
@@ -57,5 +62,9 @@ class User < ApplicationRecord
          
          def except_current_user(users)
              users.reject{ |user| user.id == self.id }
+         end
+         
+         def not_friends_with?(friend_id)
+            friendships.where(friend_id: friend_id).count < 1 
          end
 end

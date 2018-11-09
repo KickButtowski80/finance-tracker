@@ -1,5 +1,5 @@
 <%= render 'friends/lookup' %>
-<h1>My Friends</h1>
+
 <% if @friendships.size > 0  %>
   <table class="table table-stripped">
     <thead>
@@ -32,8 +32,8 @@
     
     </tbody>
 </table>
-<% else %>
-    <div class="row col-lg-12">
+<% else %> 
+    <div class="row col-lg-12 col-md-12">
         <p class="lead">You don't have any friends yet. Please add some!</p>
     </div>
 <% end %>

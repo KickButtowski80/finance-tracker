@@ -9,8 +9,20 @@ class UsersController < ApplicationController
   end
   
   def add_friend
+    friend = User.find(params[:friend])
     
+    # or
     
+    # current_user.friendships.build friend_id: @friend.id
+    # if current_user.save
+      
+      
+    if Friendship.create!( user_id: params[:user], friend_id: params[:friend])
+      flash[:success] = "#{friend.full_name} now is friend with you"
+    else
+      flash[:danger] = "There was something wrong with the friend request"
+    end
+    redirect_to my_friends_path 
   end
   
   def search
@@ -32,17 +44,21 @@ class UsersController < ApplicationController
   
   def show 
     @user = User.find(params[:id])
+    @user_stocks = @user.stocks
   end
   
   def destroy
-    @friend = Friendship.find(params[:id])    
-    unfriended_full_name = User.find(@friend.user_id).full_name  
-    @unfriended = User.where(user_id: current_user.id, friend_id: @friend.id ).first
-    @unfriended.destroy!
-    flash[:danger] = "You were unfriended #{unfriended_full_name}"
-    redirect_to my_friends_path
-    
-    
+    # @friendship = current_user.friendships.wehre(friend_id: params[:id]).first
+    # or
+     @friendship = Friendship.where(friend_id: params[:id]).first  
+     unfriended_full_name = User.find(params[:id]).full_name   
+     if  @friendship.destroy
+      flash[:notice] = "You unfriended #{unfriended_full_name}"
+     else
+       flash[:danger] = "Something went wrong during unfriending #unfriended_full_name}"
+     end
+      redirect_to my_friends_path
+   
   end
   
 end
