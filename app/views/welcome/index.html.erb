@@ -12,7 +12,9 @@
         <!--</h2>-->
   <div class="calendar-heading">
       <%= link_to '<', request.params.merge(start_date: t('date.month_names')[start_date.month-1] ) , class: 'btn btn-primary'%>
-     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+     <h2>
+         
+     </h2>
      <%= link_to '>', request.params.merge(start_date: "2018-12-14"), class: 'btn btn-primary' %>
   </div>
     </div>
@@ -36,10 +38,8 @@
                                     <% stock_by_date(day).each do |s_d|%>
                                        <li><%= s_d.stock.ticker%></li>  
                                     <% end %>
-                                </ul>
-                 
-                            </td>
-                            
+                                </ul>                 
+                            </td>                            
                         <% else %>
                             <td> 
                                 <%= day.mday %>
@@ -47,10 +47,7 @@
                                     <% stock_by_date(day).each do |s_d|%>
                                        <li><%= s_d.stock.ticker%></li>  
                                     <% end %>
-                                </ul>
-                            
-                            
-                            
+                                </ul>   
                             </td>
                         <% end %>
                     <% end %>
