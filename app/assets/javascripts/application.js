@@ -18,4 +18,25 @@
 //= require_tree .
 
 
+$(document).on('ready', function() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"]; 
+    let date = new Date().getMonth();
+    document.getElementById("current_date").innerHTML = monthNames[date];
+    
+    
+    
+    document.getElementById("increment_month").onclick = function(){ 
+        let month = monthNames.indexOf(document.getElementById("current_date").innerHTML)  + 1;
+        console.log( month + " " + date )
+        document.getElementById("current_date").innerHTML = monthNames[month] ;   
+  }
+  
+    document.getElementById("decrement_month").onclick = function(){   
+        let month = monthNames.indexOf(document.getElementById("current_date").innerHTML)  - 1;
+         document.getElementById("current_date").innerHTML = monthNames[month] ;
+  }
+});
+
+
  

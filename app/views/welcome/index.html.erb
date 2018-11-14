@@ -1,15 +1,22 @@
 <h1>Welcome to the homepage of the finance tracker app</h1>
 <hr />
-
-<% start_date = params.fetch(:start_date, Date.today).to_date %>
+<% start_date = (params[:start_date] || Date.today).to_date %> 
 <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
 <div class="row">
     <div class="col-md-12 text-center">
-        <h1>
-            Calender
-        </h1>
+        <!--<h2>-->
+            <%#= Date.today.strftime("%B %Y") %>
+        <!--    <span id ="decrement_month" class='btn btn-success'> < </span>-->
+        <!--    <span id="current_date"></span>-->
+        <!--    <span id="increment_month" class='btn btn-success'> > </span>-->
+        <!--</h2>-->
+  <div class="calendar-heading">
+      <%= link_to '<', request.params.merge(start_date: t('date.month_names')[start_date.month-1] ) , class: 'btn btn-primary'%>
+     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+     <%= link_to '>', request.params.merge(start_date: "2018-12-14"), class: 'btn btn-primary' %>
+  </div>
     </div>
-    <div class="col-md-10 col-md-push-1">
+    <div class="col-md-12">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -17,24 +24,40 @@
                         <th><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
                     <% end %>
                 </tr>
-
-            </thead>
-        
+            </thead>        
             <tbody>
             <% date_range.each_slice(7) do |week| %>
-                <tr>
+                <tr class="index-page">
                     <% week.each do |day| %>
                         <% if day == Date.today %>
-                            <td style="background-color:gray"> <%= day %></td>
+                            <td style="background-color:gray">
+                                <%= day.mday %>
+                                <ul>  
+                                    <% stock_by_date(day).each do |s_d|%>
+                                       <li><%= s_d.stock.ticker%></li>  
+                                    <% end %>
+                                </ul>
+                 
+                            </td>
+                            
                         <% else %>
-                            <td> <%= day %></td>
+                            <td> 
+                                <%= day.mday %>
+                                <ul>  
+                                    <% stock_by_date(day).each do |s_d|%>
+                                       <li><%= s_d.stock.ticker%></li>  
+                                    <% end %>
+                                </ul>
+                            
+                            
+                            
+                            </td>
                         <% end %>
                     <% end %>
                 </tr>
             <% end %>
             </tbody>
-        </table>
-    
-    
+        </table>     
     </div>
 </div>
+
