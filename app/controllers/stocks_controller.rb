@@ -1,4 +1,7 @@
 class StocksController < ApplicationController
+  
+  
+ 
   def search
   # respond_to do |format|
   #   if params[:stock].present?
