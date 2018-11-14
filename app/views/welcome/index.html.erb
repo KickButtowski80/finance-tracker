@@ -12,9 +12,9 @@
         <!--</h2>-->
   <div class="calendar-heading">
       <%= link_to '<', request.params.merge(start_date: t('date.month_names')[start_date.month-1] ) , class: 'btn btn-primary'%>
-     <h2>
-         
-     </h2>
+     
+         <span class="calendar-title" style="font-size: 20px"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    
      <%= link_to '>', request.params.merge(start_date: "2018-12-14"), class: 'btn btn-primary' %>
   </div>
     </div>
