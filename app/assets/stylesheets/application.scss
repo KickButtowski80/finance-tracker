@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  *= require font-awesome
@@ -47,7 +48,11 @@
   
 }
 
+
 .index-page td{
     height: 150px;
     width: 100px;
+    padding: 0px;
+    margin: 0px;
 }
+

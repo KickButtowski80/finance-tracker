@@ -77,3 +77,5 @@ gem "stock_quote", '~> 2.0.0'
 
 gem "font-awesome-rails"
 
+gem 'normalize-rails'
+
