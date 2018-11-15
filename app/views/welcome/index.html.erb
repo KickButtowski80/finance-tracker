@@ -24,7 +24,7 @@
                 <tr class="index-page">
                     <% week.each do |day| %>                                                
                            <%= content_tag(:td,"", style: color_day(day))  do %>
-                                <%= day.mday %>
+                                <%= link_to day.mday, my_portfolio_path %>
                                 <ul>  
                                     <% stock_by_date(day).each do |s_d|%>
                                        <li><%= s_d.stock.ticker%></li>  
@@ -39,7 +39,4 @@
         </table>     
     </div>
 </div> 
-
-
-
 </div>
