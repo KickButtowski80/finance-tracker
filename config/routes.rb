@@ -10,7 +10,7 @@ Rails.application.routes.draw do
    
   resources :user_stocks, only: [:create, :destroy]
   resources :users , only: [:show, :destroy]
-  
+  resources :notes , only: [:new,:create,:index]
   get 'search-friends' , to: 'users#search'
   
 end

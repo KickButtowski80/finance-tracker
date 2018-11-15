@@ -1,0 +1,17 @@
+<%= form_with model: @note, :html => {class: "form-horizontal", role:"form"} , local: true do |form| %>
+
+<div class="form-group">
+    <%= hidden_field_tag "date", "#{params[:date]}" %>
+    <div class="control-label col-sm-2">
+         <%= form.label :content, 'Note' %>
+    </div>
+    <div class="col-sm-8">
+         <%= form.text_area :content , class: 'form-control', placeholder: "enter your note here", autofocus: true %>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit 'Note' , class: ' btn btn-primary' %> 
+    </div>
+</div>              
+<% end %>    

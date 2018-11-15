@@ -24,11 +24,13 @@
                 <tr class="index-page">
                     <% week.each do |day| %>                                                
                            <%= content_tag(:td,"", style: color_day(day))  do %>
-                                <%= link_to day.mday, my_portfolio_path %>
+                              
+                                <%= link_to day.mday, new_note_path(date: day), class: 'btn btn-xs btn-success' %>
                                 <ul>  
                                     <% stock_by_date(day).each do |s_d|%>
                                        <li><%= s_d.stock.ticker%></li>  
                                     <% end %>
+                                    <li><%= find_notes(day).inspect %></li>
                                 </ul>                 
                             </td>  
                              <% end %>
