@@ -23,7 +23,7 @@
             <% date_range.each_slice(7) do |week| %>
                 <tr class="index-page">
                     <% week.each do |day| %>                                                
-                           <%= content_tag(:td,"", style:(day ==  Date.current) ? "background-color:#face" :  "")  do %>
+                           <%= content_tag(:td,"", style: color_day(day))  do %>
                                 <%= day.mday %>
                                 <ul>  
                                     <% stock_by_date(day).each do |s_d|%>
