@@ -14,8 +14,13 @@ module ApplicationHelper
       "background-color: #ffff"
     else
       "background-color: gray"
-    end
-    
+    end    
+  end
+  
+  def find_notes(day)    
+    #created_at = day.created_at.split(" ")[0]
+    Note.where("Date(created_at)= ? and user_id= ? ",  day , current_user.id)
+    # Note.includes(:user).find_by_created_at(day.to_date.all_day) 
   end
   
 end

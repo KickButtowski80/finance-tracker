@@ -1,19 +1,19 @@
 class NotesController < ApplicationController
     def index
-        @notes = Note.all
+        @notes = Note.where("Date(created_at)= ? and user_id= ? ",  date_params[:date] , current_user.id)
     end
     
     def new
         @note = Note.new     
-        @date = params[:date]
-      
+        @note_date = date_params[:date]      
     end 
     
   def create
-    
-    @note = Note.new(note_params)     
+    @note_date = date_params[:date]
+    @note = Note.new(note_params) 
+    @note.user_id = current_user.id
      if @note.save!
-        @note.update!(created_at: params[:date])
+        @note.update!(created_at: @note_date)
         flash[:success] = "your note was saved"
         redirect_to root_path
      else
@@ -26,8 +26,11 @@ class NotesController < ApplicationController
     
     def set_note
     end
-    
+
+    def date_params
+        params.permit(:date)
+    end
     def note_params
-        params.require(:note).permit(:content) 
+        params.require(:note).permit(:content)
     end
 end

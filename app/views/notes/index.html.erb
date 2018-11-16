@@ -1,1 +1,7 @@
-<%= @notes.inspect %>
+<% @notes.each do |note| %>
+    <div class="well">
+         <%= note.content %> by <small><%= User.find(note.user_id).full_name%></small>
+    </div>
+<% end %>
+
+<%= link_to "Back to Calender", root_path %>

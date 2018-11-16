@@ -1,7 +1,7 @@
 <%= form_with model: @note, :html => {class: "form-horizontal", role:"form"} , local: true do |form| %>
 
 <div class="form-group">
-    <%= hidden_field_tag "date", "#{params[:date]}" %>
+    <%= hidden_field_tag "date", "#{@note_date}" %>
     <div class="control-label col-sm-2">
          <%= form.label :content, 'Note' %>
     </div>
