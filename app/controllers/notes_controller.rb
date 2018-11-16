@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
     def index
-        @notes = Note.where("Date(created_at)= ? and user_id= ? ",  date_params[:date] , current_user.id)
+        @notes = Note.includes(:user).where("Date(created_at)= ? ",  date_params[:date])
     end
     
     def new
