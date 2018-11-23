@@ -1,7 +1,7 @@
 module ApplicationHelper
     
   def stock_by_date(date)      
-    UserStock.includes(:user, :stock ).where("date(created_at) = ? and user_id = ? ", date , current_user.id)  
+       UserStock.where("date(created_at) = ? and user_id = ? ", date , current_user.id)  
   end
   def start_date
      start_date = (params[:start_month] || Date.today).to_date

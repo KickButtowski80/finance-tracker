@@ -5,7 +5,7 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.string :name
       t.decimal :last_price
 
-      t.timestamps
+      t.timestamps 
     end
   end
 end

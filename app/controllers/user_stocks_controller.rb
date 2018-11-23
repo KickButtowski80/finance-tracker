@@ -1,13 +1,15 @@
 class UserStocksController < ApplicationController
   def create
     stock = Stock.find_by_ticker(params[:stock_ticker])
-    if stock.blank?
-      stock = Stock.new_from_lookup(params[:stock_ticker])       
+   #debugger
+    # if stock.blank?
+      stock = Stock.new_from_lookup(params[:stock_ticker])    
       stock.save        
-    end   
+    # end   
       
     @user_stock = UserStock.create(user: current_user, stock: stock)  
-    @user_stock.update!(created_at: Time.current)
+    # binding.pry
+    # @user_stock.update!(Date created_at: Time.current)
     flash[:success] = "Stock #{@user_stock.stock.name} was successfully added to portfolio at #{@user_stock.created_at}"
     redirect_to my_portfolio_path
   end
