@@ -36,7 +36,12 @@
 
     <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
   </div>
-
+  
+  <div class="form-group">
+   <%= f.label :password_confirmation %>
+   <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones, class: 'form-control') %>  
+  
+  </div>
   <div class="form-group">
     <%= f.submit t('.update'), class: 'btn btn-primary' %>
   </div>
