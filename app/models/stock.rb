@@ -2,7 +2,7 @@ class Stock < ApplicationRecord
     
     has_many :user_stocks
     has_many :users, through: :user_stocks 
-    
+    # self.skip_time_zone_conversion_for_attributes = [:written_on]
     def self.find_by_ticker ticker_symbol
         where(ticker: ticker_symbol).first
     end
@@ -17,5 +17,11 @@ class Stock < ApplicationRecord
             return nil
         end
     end
+    
+    def local_time(date)
+      Time.use_zone(self.time_zone) do
+        Time.zone.at(date.to_i)
+      end
+end
  
 end
