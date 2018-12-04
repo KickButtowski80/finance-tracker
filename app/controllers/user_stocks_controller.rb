@@ -3,8 +3,13 @@ class UserStocksController < ApplicationController
     stock = Stock.find_by_ticker(params[:stock_ticker])
    #debugger
     # if stock.blank?
-      stock = Stock.new_from_lookup(params[:stock_ticker])    
-      stock.save        
+      stock = Stock.new_from_lookup(params[:stock_ticker])
+      # stock.save  
+      # DateTime.current.in_time_zone(@current_user.time_zone).to_s.to_datetime.strftime("%F %T")
+      
+      # stock.created_at =   DateTime.current.in_time_zone(@current_user.time_zone).strftime("%F %T")
+      # stock.updated_at =   DateTime.current.in_time_zone(@current_user.time_zone).strftime("%F %T")
+      stock.save!
     # end   
       
     @user_stock = UserStock.create(user: current_user, stock: stock)  
