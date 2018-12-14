@@ -1,7 +1,7 @@
 class UserStocksController < ApplicationController
   def create
     stock = Stock.find_by_ticker(params[:stock_ticker])
-   #debugger
+   # debugger
     # if stock.blank?
       stock = Stock.new_from_lookup(params[:stock_ticker])
       # stock.save  

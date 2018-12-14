@@ -20,13 +20,14 @@
             <td> <%= user_stock.ticker%></td>
             <td> <%= user_stock.last_price%></td>
             <td>
-             <% unless current_user.stock_already_added?(user_stock.ticker)%>
-                 <%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: user_stock.ticker),
-                                          class: 'btn btn-xs btn-success', method: :post %>  
+             <% byebug %>
+             <% if current_user.stock_already_added?(user_stock.ticker)%>
+                <span class="label label-default">
+                  Stock cannot be added because you have already added this stock
+                </span>
              <%else%>
-                  <span class="label label-default">
-                      Stock cannot be added because you have already added this stock
-                  </span>
+                <%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: user_stock.ticker),
+                                          class: 'btn btn-xs btn-success', method: :post %>  
              <%end%>
             </td>
         </tr>      

@@ -14,6 +14,7 @@ class NotesController < ApplicationController
     @note.user_id = current_user.id
      if @note.save!
         @note.update!(created_at: @note_date)
+        # debugger
         flash[:success] = "your note was saved"
         redirect_to root_path
      else

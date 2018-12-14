@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
     private
     
       def set_time_zone(&block)
-        Time.use_zone(current_user.time_zone, &block)
+        time_zone = current_user.try(:time_zone) || 'UTC'
+        Time.use_zone(time_zone, &block)
       end
+      
   protected
   
   def configure_permitted_parameters
