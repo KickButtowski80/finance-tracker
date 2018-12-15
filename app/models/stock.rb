@@ -1,5 +1,4 @@
 class Stock < ApplicationRecord
-    
     has_many :user_stocks
     has_many :users, through: :user_stocks 
     # self.skip_time_zone_conversion_for_attributes = [:written_on]
