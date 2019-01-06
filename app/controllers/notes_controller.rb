@@ -9,11 +9,11 @@ class NotesController < ApplicationController
     end 
     
   def create
-    @note_date = date_params[:date]
+    @note_date = date_params[:date].to_time
     @note = Note.new(note_params) 
     @note.user_id = current_user.id
-     if @note.save!
-        @note.update!(created_at: @note_date)
+    @note.update_attributes!(created_at: @note_date)
+     if @note.save!        
         # debugger
         flash[:success] = "your note was saved"
         redirect_to root_path

@@ -19,8 +19,7 @@
             <td> <%= user_stock.name%></td>
             <td> <%= user_stock.ticker%></td>
             <td> <%= user_stock.last_price%></td>
-            <td>
-             <% byebug %>
+            <td> 
              <% if current_user.stock_already_added?(user_stock.ticker)%>
                 <span class="label label-default">
                   Stock cannot be added because you have already added this stock
