@@ -1,6 +1,6 @@
 <div class="container">
 <h1>Welcome to the homepage of the finance tracker app</h1>
-<h2><%= DateTime.now.in_time_zone(current_user.time_zone) %></h2>
+<h2><%#= DateTime.now.in_time_zone(current_user.time_zone) %></h2>
 <hr /> 
 <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
 <div class="row">
@@ -11,7 +11,7 @@
           <%= link_to '>', request.params.merge(start_month: t('date.month_names')[start_date.month+1]), class: 'btn btn-primary' %>
         </div>
     </div>
-    <div class="col-md-12 col-xs-12" style="margin: 0; padding: 0;">
+    <div class="col-md-12 col-xs-12 table-responsive toggle-circle-filled" style="margin: 0; padding: 0;">
         <table class="table table-bordered">
             <thead>
                 <tr>
