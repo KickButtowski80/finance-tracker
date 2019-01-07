@@ -29,9 +29,9 @@
                                 <ul>
                                     <% stock_by_date(day).each do |s_d|%>
                                        <li> <%= s_d.stock.ticker%> </li>
-                                    <% end %>
-                                    <%= link_to "notes for today", notes_path(date: day), method: :get , class: 'btn btn-success'  unless find_notes(day).empty? %>
+                                    <% end %>                                   
                                 </ul>
+                                <%= link_to "notes", notes_path(date: day), method: :get , class: 'btn btn-info'  unless find_notes(day).empty? %>
                             </td>
                         <% end %>
                     <% end %>
