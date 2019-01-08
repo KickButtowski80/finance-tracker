@@ -31,7 +31,7 @@
                                        <li> <%= s_d.stock.ticker%> </li>
                                     <% end %>                                   
                                 </ul>
-                                <%= link_to "notes", notes_path(date: day), method: :get , class: 'btn btn-info'  unless find_notes(day).empty? %>
+                                <%= link_to "notes", notes_path(date: day,id: current_user.id), method: :get , class: 'btn btn-info'  unless find_notes(day).empty? %>
                             </td>
                         <% end %>
                     <% end %>
